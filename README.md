@@ -46,10 +46,10 @@ Make an update to the application by completing the following tasks:
 
 ### Guidelines
 
-1. Limit your work to 4 hours.
+1. Limit your work to **4 hours**.
 2. Document any assumptions you make.
 3. You may use any libraries you prefer, but be prepared to justify your choices.
-4. Focus on ease of use rather than aesthetics, as this is not a design challenge.
+4. Your user interface implementation **will be judged on ease of use rather than aesthetics**, as this is not a graphic design challenge.
 
 ### Bonus Points (Complete only if time permits within the 4-hour period)
 
@@ -57,6 +57,6 @@ Make an update to the application by completing the following tasks:
 2. Develop a page that recommends likely duplicates and allows users to merge them.
 3. Break down the clinic_address into multiple columns and geocode the location.
 
-Submit your solution, along with any additional documentation or explanations, to danny@eugenelabs.com.
+Submit your solution, along with any additional documentation or explanations, to warren@eugenelabs.com.
 
 Good luck and enjoy the challenge!
