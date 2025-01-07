@@ -25,12 +25,22 @@ return new class extends Migration
             $table->foreign('clinic_id')->references('id')->on('clinics')->onDelete('cascade');
         });
 
+        Schema::table('tests', function (Blueprint $table) {
+            $table->unsignedBigInteger('referring_clinic_id')->nullable();
+            $table->foreign('referring_clinic_id')->references('id')->on('clinics')->onDelete('cascade');
+        });
+
         // Data migration done in one go; normally we may want to handle it as a separate script/Command:
         foreach (Doctor::all() as $doctor) {
             $clinic = Clinic::create([
                 'name' => $doctor->clinic_name,
                 'address' => $doctor->clinic_address,
             ]);
+
+            foreach ($doctor->tests()->get() as $test) {
+                $test->referringClinic()->associate($clinic);
+                $test->save();
+            }
 
             $doctor->clinic()->associate($clinic);
             $doctor->save();
@@ -57,11 +67,20 @@ return new class extends Migration
             $doctor->clinic_address = $doctor->clinic?->address;
             $doctor->clinic()->dissociate();
 
+            foreach ($doctor->tests() as $test) {
+                $test->referringClinic()->dissociate();
+                $test->save();
+            }
+
             $doctor->save();
         }
 
         Schema::table('doctors', function (Blueprint $table) {
             $table->dropColumn('clinic_id');
+        });
+
+        Schema::table('tests', function (Blueprint $table) {
+            $table->dropColumn('referring_clinic_id');
         });
 
         Schema::dropIfExists('clinics');

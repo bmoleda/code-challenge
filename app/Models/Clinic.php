@@ -14,4 +14,9 @@ class Clinic extends Model
     {
         return $this->hasMany(Doctor::class, 'clinic_id');
     }
+
+    public function tests()
+    {
+        return $this->hasMany(Test::class, 'referring_clinic_id');
+    }
 }
