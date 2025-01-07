@@ -16,6 +16,14 @@
     <header class="bg-blue-500 py-4">
         <div class="container mx-auto px-4">
             <a href="/" class="text-white text-2xl font-semibold">{{ config('app.name', 'Eugene') }}</a>
+            @props(['menuItems' => [
+                'Doctors' => '/doctors',
+                'Tests' => '/tests',
+                'Clinics' => '/clinics',
+            ]])
+            @foreach($menuItems as $label => $path)
+                <a href="{{ $path }}" class="text-white text-1xl {{ $loop->first ? 'pl-10' : 'pl-5' }} ">{{ $label }}</a>
+            @endforeach
         </div>
     </header>
 
