@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ClinicController;
 use App\Http\Controllers\DoctorController;
+use App\Http\Controllers\DoctorMergeController;
 use App\Http\Controllers\TestController;
 
 Route::get('/', function() {
@@ -12,3 +13,6 @@ Route::get('/', function() {
 Route::resource('doctors', DoctorController::class);
 Route::resource('tests', TestController::class);
 Route::resource('clinics', ClinicController::class);
+
+Route::get('/merge-doctors/{doctor}', [DoctorMergeController::class, 'index'])->name('merge-doctors');
+Route::put('/merge-doctors/perform/{doctor}', [DoctorMergeController::class, 'perform'])->name('merge-doctors-perform');

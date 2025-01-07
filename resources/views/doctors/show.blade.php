@@ -9,6 +9,10 @@
         <a href="{{ route('doctors.edit', $doctor) }}"
             class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Edit Doctor</a>
     </div>
+    <div class="flex items-center justify-end mb-4">
+        <a href="{{ route('merge-doctors', $doctor) }}"
+        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Merge Doctor</a>
+    </div>
 
     <div class="mb-4">
         <strong>Name:</strong> {{ $doctor->name }}
