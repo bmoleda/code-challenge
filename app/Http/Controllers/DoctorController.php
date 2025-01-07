@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Clinic;
 use App\Models\Doctor;
 use App\Http\Requests\StoreDoctorRequest;
 use App\Http\Requests\UpdateDoctorRequest;
@@ -17,12 +18,22 @@ class DoctorController extends Controller
 
     public function create()
     {
-        return view('doctors.create');
+        $clinics = Clinic::all();
+
+        return view('doctors.create', compact('clinics'));
+
     }
 
     public function store(StoreDoctorRequest $request)
     {
-        Doctor::create($request->validated());
+        $validatedData = $request->validate([
+            'name' => '',
+            'specialty' => '',
+            'clinic_id' => 'exists:clinics,id',
+        ]);
+
+        Doctor::create($validatedData);
+
         return redirect()->route('doctors.index')->with('success', 'Doctor created successfully.');
     }
 

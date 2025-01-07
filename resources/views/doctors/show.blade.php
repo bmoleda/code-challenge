@@ -17,10 +17,10 @@
         <strong>Specialty:</strong> {{ $doctor->specialty }}
     </div>
     <div class="mb-4">
-        <strong>Clinic Name:</strong> {{ $doctor->clinic_name }}
+        <strong>Clinic Name:</strong> {{ $doctor->clinic->name }}
     </div>
     <div class="mb-4">
-        <strong>Clinic Address:</strong> {{ $doctor->clinic_address }}
+        <strong>Clinic Address:</strong> {{ $doctor->clinic->address }}
     </div>
 
     <h2 class="text-xl font-bold mb-4">Related Tests</h2>

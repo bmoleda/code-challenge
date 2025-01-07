@@ -34,8 +34,8 @@
                         <td class="border px-4 py-2">{{ $doctor->updated_at->format('Y-m-d H:i:s') }}</td>
                         <td class="border px-4 py-2">{{ $doctor->name }}</td>
                         <td class="border px-4 py-2">{{ $doctor->specialty }}</td>
-                        <td class="border px-4 py-2">{{ $doctor->clinic_name }}</td>
-                        <td class="border px-4 py-2">{{ $doctor->clinic_address }}</td>
+                        <td class="border px-4 py-2">{{ $doctor->clinic->name }}</td>
+                        <td class="border px-4 py-2">{{ $doctor->clinic->address }}</td>
                         <td class="border px-4 py-2">{{ $doctor->tests_count }}</td>
                         <td class="border px-4 py-2">
                             <a href="{{ route('doctors.show', $doctor) }}" class="text-blue-500">View</a>
