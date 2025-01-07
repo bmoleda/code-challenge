@@ -51,6 +51,7 @@ class DoctorController extends Controller
         $doctor->update($validatedData);
         return redirect()->route('doctors.index')->with('success', 'Doctor updated successfully.');
     }
+
     private function validateInput(StoreDoctorRequest|UpdateDoctorRequest $request)
     {
         $validatedData = $request->validated();

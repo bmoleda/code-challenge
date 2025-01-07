@@ -14,7 +14,7 @@
         <strong>Name:</strong> {{ $clinic->name }}
     </div>
     <div class="mb-4">
-        <strong>Address:</strong> {{ $clinic->specialty }}
+        <strong>Address:</strong> {{ $clinic->address }}
     </div>
 
     <h2 class="text-xl font-bold mb-4">Related Doctors</h2>

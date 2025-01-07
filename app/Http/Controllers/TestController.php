@@ -29,6 +29,9 @@ class TestController extends Controller
             'referring_doctor_id' => 'exists:doctors,id',
         ]);
 
+        // Derive the referring clinic from the referring doctor:
+        $validatedData['referring_clinic_id'] = Doctor::find($validatedData['referring_doctor_id'])?->clinic_id ?? null;
+
         Test::create($validatedData);
 
         return redirect()->route('tests.index')->with('success', 'Test created successfully.');

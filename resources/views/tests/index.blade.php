@@ -40,8 +40,10 @@
                             @endif
                         </td>
                         <td class="border px-4 py-2">
-                            @if ($test->referringDoctor)
-                                {{ $test->referringDoctor->clinic_name }}
+                            @if ($test->referringClinic)
+                                <a href="{{ route('clinics.show', $test->referringClinic) }}">
+                                    {{ $test->referringClinic->name }}
+                                </a>
                             @endif
                         </td>
                     </tr>
