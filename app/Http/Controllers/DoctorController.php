@@ -53,13 +53,7 @@ class DoctorController extends Controller
     }
     private function validateInput(StoreDoctorRequest|UpdateDoctorRequest $request)
     {
-        $validatedData = $request->validate([
-            'name' => '',
-            'specialty' => '',
-            'clinic_id' => 'exclude_if:clinic_id,null|exists:clinics,id',
-            'clinic_name' => 'exclude_unless:clinic_id,null|string',
-            'clinic_address' => 'exclude_unless:clinic_id,null|string',
-        ]);
+        $validatedData = $request->validated();
 
         // If clinic_id has been excluded in the validation, process a new clinic:
         if (!isset($validatedData['clinic_id'])) {

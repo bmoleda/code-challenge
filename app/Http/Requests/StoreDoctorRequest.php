@@ -24,8 +24,9 @@ class StoreDoctorRequest extends FormRequest
         return [
             'name' => 'required',
             'specialty' => '',
-            'clinic_name' => '',
-            'clinic_address' => '',
+            'clinic_id' => 'exclude_if:clinic_id,null|exists:clinics,id',
+            'clinic_name' => 'exclude_unless:clinic_id,null|string',
+            'clinic_address' => 'exclude_unless:clinic_id,null|string',
         ];
     }
 }
