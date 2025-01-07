@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ClinicController;
 use App\Http\Controllers\DoctorController;
 use App\Http\Controllers\TestController;
 
@@ -10,4 +11,4 @@ Route::get('/', function() {
 
 Route::resource('doctors', DoctorController::class);
 Route::resource('tests', TestController::class);
-
+Route::resource('clinics', ClinicController::class);
