@@ -24,13 +24,17 @@
         </div>
 
         <div class="mb-4">
-            <label for="referring_doctor_id" class="block mb-2">Referring Doctor</label>
-            <select name="referring_doctor_id" id="referring_doctor_id" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
-                <option value="">Select Doctor</option>
+            <label for="referring_doctor_id_visible" class="block mb-2">Referring Doctor</label>
+
+            <input list="referring_doctor_id_visible" class="bm-combo-field shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+            <datalist id="referring_doctor_id_visible">
+                <option data-value="" value="Select Doctor">
                 @foreach($doctors as $doctor)
-                    <option value="{{ $doctor->id }}" {{ old('referring_doctor_id') == $doctor->id ? 'selected' : '' }}>{{ $doctor->name }} ({{ $doctor->clinic?->name }})</option>
+                    <option data-value="{{ $doctor->id }}">{{ $doctor->name }} ({{ $doctor->clinic->name }})</option>
                 @endforeach
-            </select>
+            </datalist>
+            <input type="hidden" name="referring_doctor_id" id="referring_doctor_id">
+
             @error('referring_doctor_id')
                 <p class="text-red-500 mt-1">{{ $message }}</p>
             @enderror

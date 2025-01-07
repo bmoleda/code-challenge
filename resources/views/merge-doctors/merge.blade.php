@@ -12,14 +12,17 @@
         @method('PUT')
 
         <div class="mb-4">
-            <label for="doctor_id" class="block mb-2">Choose a Doctor to merge into the Doctor above:</label>
+            <label for="doctor_id_visible" class="block mb-2">Choose a Doctor to merge into the Doctor above:</label>
 
-            <select name="doctor_id" id="doctor_id" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+            <input list="doctor_id_visible" class="bm-combo-field shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+            <datalist id="doctor_id_visible">
                 <option value="">Select Doctor</option>
                 @foreach($otherDoctors as $doctor)
-                    <option value="{{ $doctor->id }}">{{ $doctor->name }} ({{ $doctor->clinic?->name }})</option>
+                    <option data-value="{{ $doctor->id }}">{{ $doctor->name }} ({{ $doctor->clinic?->name }})</option>
                 @endforeach
-            </select>
+            </datalist>
+            <input type="hidden" name="doctor_id" id="doctor_id">
+
             <p class="text-500 mt-1">Tests associated with the selected Doctor are going to be assigned to the other Doctor.</p>
             @error('doctor_id')
                 <p class="text-red-500 mt-1">{{ $message }}</p>

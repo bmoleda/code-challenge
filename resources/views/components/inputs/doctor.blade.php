@@ -15,15 +15,19 @@
         </div>
 
         <div class="mb-4">
-            <label for="clinic_id" class="block mb-2">Clinic</label>
-            <select name="clinic_id" id="clinic_id" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+            <label for="clinic_id_visible" class="block mb-2">Clinic</label>
+
+            <input list="clinic_id_visible" class="bm-combo-field shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+            <datalist id="clinic_id_visible">
                 <option value="">Add new (provide data below) or select</option>
                 @foreach($clinics as $clinic)
-                    <option value="{{ $clinic->id }}" {{ (!empty($doctor) && $doctor->clinic_id == $clinic->id) ? 'selected' : '' }}>{{ $clinic->name }} ({{ $clinic->address }})</option>
+                    <option data-value="{{ $clinic->id }}" {{ (!empty($doctor) && $doctor->clinic_id == $clinic->id) ? 'selected' : '' }}>{{ $clinic->name }} ({{ $clinic->address }})</option>
                 @endforeach
-            </select>
+            </datalist>
+            <input type="hidden" name="clinic_id" id="clinic_id">
+
             @error('clinic_id')
-            <p class="text-red-500 mt-1">{{ $message }}</p>
+                <p class="text-red-500 mt-1">{{ $message }}</p>
             @enderror
         </div>
 
